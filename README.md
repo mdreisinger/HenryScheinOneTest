@@ -19,3 +19,4 @@ Run SQL commands from the Person Table to verify data is correctly inserted, and
     * tests/test_post_endpoint.py
     * tests/test_get_endpoint.py
     * tests/test_delete_endpoint.py
+* Use `pytest-3` to run the tests, e.g. `pytest-3 tests/`
