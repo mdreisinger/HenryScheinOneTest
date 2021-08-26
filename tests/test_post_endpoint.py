@@ -20,7 +20,7 @@ INVALID_DATA = {
 }
 
 
-def test_postEndpointShouldReturn201GivenValidDataAndCredentials():
+def test_postEndpointShouldReturn200GivenValidDataAndCredentials():
     # Arrange
     post_endpoint = PostEndpoint()
     
@@ -28,7 +28,7 @@ def test_postEndpointShouldReturn201GivenValidDataAndCredentials():
     actual_response = post_endpoint.post(json.dumps(VALID_DATA))
     
     # Assert
-    assert actual_response.status_code == 201
+    assert actual_response.status_code == 200
 
 def test_postEndpointShouldReturn403GivenValidDataAndReadOnlyCredentials():
     # Arrange
