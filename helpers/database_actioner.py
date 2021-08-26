@@ -8,7 +8,7 @@ class DatabaseActioner:
                  h2_jar : str,
                  jclassname : str = "org.h2.Driver",
                  url : str = "jdbc:h2:tcp://localhost:8091/mem:personDB",
-                 credentials : List[str] = ["testDBUsername", "testDatabasePassword"]):
+                 credentials : List[str] = ["testDBUsername", "testDBPassword"]):
         """!
         @brief  Creates a connection to the database.
         @param  h2_jar The absolute path to the H2 Jar file, e.g. "/home/mdreisinger/src/testAutomation/target/h2-1.4.200.jar"
@@ -31,6 +31,21 @@ class DatabaseActioner:
         """
         return self.curs.execute(sql_statement)
 
+    def fetchall(self):
+        return self.curs.fetchall()
+
+    def close(self):
+        try:
+            self.curs.close()
+        except:
+            pass
+        try:
+           self.conn.close()
+        except:
+            pass
+
+    def __del__(self):
+        self.close()
 
 if __name__ == "__main__":
     dba = DatabaseActioner("org.h2.Driver", 
@@ -39,3 +54,4 @@ if __name__ == "__main__":
                            "/home/mdreisinger/src/testAutomation/target/h2-1.4.200.jar")
 
     print(dba.execute("select * from PERSON"))
+    print(dba.fetchall())

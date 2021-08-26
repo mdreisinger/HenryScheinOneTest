@@ -32,10 +32,6 @@ class PostEndpoint(BaseEndpoint):
         @param  data the data to Post to the endpoint.
         @return The request response.
         """
-        print(self.post_url)
-        print(self.headers)
-        print(type(data))
-        print(self.credentials)
         return requests.request("POST", 
                                 self.post_url,
                                 headers=self.headers,
