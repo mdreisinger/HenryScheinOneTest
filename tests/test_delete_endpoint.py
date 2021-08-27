@@ -16,9 +16,9 @@ def setup():
     dba.execute("select * from PERSON")
     pretest_data = dba.fetchall()
     assert pretest_data == [], "Failed to clear database before running test."
-    dba.execute(f"insert into PERSON values ('{UNIQUE_GUY_0[0]}','{UNIQUE_GUY_0[1]}','{UNIQUE_GUY_0[2]}','{UNIQUE_GUY_0[3]}')")
-    dba.execute(f"insert into PERSON values ('{UNIQUE_GUY_1[0]}','{UNIQUE_GUY_1[1]}','{UNIQUE_GUY_1[2]}','{UNIQUE_GUY_1[3]}')")
-    dba.execute(f"insert into PERSON values ('{UNIQUE_GUY_2[0]}','{UNIQUE_GUY_2[1]}','{UNIQUE_GUY_2[2]}','{UNIQUE_GUY_2[3]}')")
+    dba.execute(f"insert into PERSON values {UNIQUE_GUY_0}")
+    dba.execute(f"insert into PERSON values {UNIQUE_GUY_1}")
+    dba.execute(f"insert into PERSON values {UNIQUE_GUY_2}")
     dba.execute("select * from PERSON")
     pretest_data = dba.fetchall()
     assert pretest_data == [UNIQUE_GUY_0, UNIQUE_GUY_1, UNIQUE_GUY_2], "Failed to insert unique people into database before running test."
