@@ -51,10 +51,6 @@ def test_deleteEndpointShouldReturn403GivenValidIdAndReadOnlyCredentials():
     # Arrange
     setup()
     delete_endpoint = DeleteEndpoint()
-def test_deleteEndpointShouldReturn403GivenValidIdAndReadOnlyCredentials():
-    # Arrange
-    setup()
-    delete_endpoint = DeleteEndpoint()
     
     # Act
     actual_response = delete_endpoint.delete(UNIQUE_GUY_0[0], write_access=False)
@@ -71,6 +67,7 @@ def test_deleteEndpointShouldDeleteTheCorrectPersonGivenValidIdAndCredentials_0(
     actual_response = delete_endpoint.delete(UNIQUE_GUY_0[0], write_access=True)
     
     # Assert
+    assert actual_response.status_code == 200
     dba = DatabaseActioner(H2_JAR)
     dba.execute("select * from PERSON")
     data = dba.fetchall()
@@ -83,9 +80,10 @@ def test_deleteEndpointShouldDeleteTheCorrectPersonGivenValidIdAndCredentials_1(
     delete_endpoint = DeleteEndpoint()
     
     # Act
-    actual_response = delete_endpoint.delete(UNIQUE_GUY_0[1], write_access=True)
+    actual_response = delete_endpoint.delete(UNIQUE_GUY_1[0], write_access=True)
     
     # Assert
+    assert actual_response.status_code == 200
     dba = DatabaseActioner(H2_JAR)
     dba.execute("select * from PERSON")
     data = dba.fetchall()
@@ -101,6 +99,7 @@ def test_deleteEndpointShouldDeleteTheCorrectPersonGivenValidIdAndCredentials_2(
     actual_response = delete_endpoint.delete(UNIQUE_GUY_2[0], write_access=True)
     
     # Assert
+    assert actual_response.status_code == 200
     dba = DatabaseActioner(H2_JAR)
     dba.execute("select * from PERSON")
     data = dba.fetchall()
