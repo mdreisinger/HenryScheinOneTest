@@ -1,7 +1,7 @@
 # HenryScheinOneTest
 
 ## Objective
-Run SQL commands from the Person Table to verify data is correctly inserted, and deleted
+The goal of this test is to verify if our application is ready to be deployed to production. 
 
 ## Scope
 * POST
